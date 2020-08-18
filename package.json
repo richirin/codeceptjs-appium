@@ -1,0 +1,17 @@
+{
+  "name": "pos-rewash",
+  "version": "1.0.0",
+  "description": "Automation untuk POS Rewash",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richi Ramadhan",
+  "license": "MIT",
+  "devDependencies": {
+    "appium": "^1.18.0",
+    "appium-doctor": "^1.15.3",
+    "codeceptjs": "^2.6.7",
+    "webdriverio": "^6.3.6"
+  }
+}
