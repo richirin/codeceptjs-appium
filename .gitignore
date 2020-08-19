@@ -1,3 +1,6 @@
 apk/*
 node_modules
 report/*
+src
+package-lock.json
+tests/screenshots

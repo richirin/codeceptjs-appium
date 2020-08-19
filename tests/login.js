@@ -1,8 +1,10 @@
 Feature('Login');
 
 Scenario('Berhasil Login', (I) => {
-    I.fillField('Masukkan Email / No Telepon Anda', 'testerqa2312+16@gmail.com');
-    I.fillField('Masukan Password Anda', 'Test@123');
+    // I.saveScreenshot("Codecept_IO_Screenshot_Image.png");
+    // I.seeVisualDiff("Codecept_IO_Screenshot_Image.png", {tolerance: 2, prepareBaseImage: false});
+    I.fillField('Masukkan Email / No Telepon Anda', process.env.EMAIL);
+    I.fillField('Masukan Password Anda', process.env.PASSWORD);
     I.tap('MASUK');
     I.see('Pilih Outlet')
   });

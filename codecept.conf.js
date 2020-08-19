@@ -1,13 +1,21 @@
+require('dotenv').config()
+
 exports.config = {
   output: 'report',
   helpers: {
     Appium: {
-      app: 'apk/rewash.apk',
+      app: `apk/${process.env.APK}`,
       appPackage: 'spe.pos.rewash',
       appActivity: 'spe.pos.rewash.feature.login.LoginActivity',
       platform: 'Android',
       deviceName: 'Android Emulator',
       automationName: 'UiAutomator2'
+    },
+    ResembleHelper : {
+      require: 'codeceptjs-resemblehelper',
+      screenshotFolder : './tests/output/',
+      baseFolder: './tests/screenshots/base/',
+      diffFolder: './tests/screenshots/diff/'
     }
   },
   include: {
@@ -25,6 +33,6 @@ exports.config = {
       enabled: true
     }
   },
-  tests: './tests/order.js',
-  name: 'POS-Mobile'
+  tests: './tests/*.js',
+  name: 'Automation POS Rewash'
 }
