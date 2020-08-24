@@ -11,9 +11,12 @@
   "devDependencies": {
     "appium": "^1.18.0",
     "appium-doctor": "^1.15.3",
+    "chai": "^4.2.0",
     "codeceptjs": "^2.6.7",
     "dotenv": "^8.2.0",
+    "mocha": "^8.1.1",
     "mochawesome": "^6.1.1",
+    "prettier": "2.0.5",
     "webdriverio": "^6.3.6"
   },
   "dependencies": {

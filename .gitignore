@@ -4,3 +4,4 @@ report/*
 src
 package-lock.json
 tests/screenshots
+.env
