@@ -1,12 +1,12 @@
-Feature("Login");
+Feature('Login');
 
-Scenario("Berhasil Login", (I) => {
+Scenario('Berhasil Login', I => {
   // I.saveScreenshot("Codecept_IO_Screenshot_Image.png");
   // I.seeVisualDiff("Codecept_IO_Screenshot_Image.png", {tolerance: 2, prepareBaseImage: false});
-  I.fillField("Masukkan Email / No Telepon Anda", process.env.EMAIL);
-  I.fillField("Masukan Password Anda", process.env.PASSWORD);
-  I.tap("MASUK");
-  I.see("Pilih Outlet");
+  I.fillField('Masukkan Email / No Telepon Anda', process.env.EMAIL);
+  I.fillField('Masukan Password Anda', process.env.PASSWORD);
+  I.tap('MASUK');
+  I.see('Pilih Outlet');
 });
 
 // Scenario("Gagal Login ketika memasukan email atau password yang salah", (I) => {
