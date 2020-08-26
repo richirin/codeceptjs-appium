@@ -13,6 +13,14 @@ module.exports = function () {
       this.tap('#android:id/text1');
       this.tap(outlet);
       this.tap('SIMPAN');
+      this.see('Semua Produk');
+      this.see(outlet);
+    },
+
+    pilihProduk: function (produk) {
+      this.tap('Automation Kemeja');
+      this.tap('SIMPAN');
+      this.tap('BAYAR');
     },
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.

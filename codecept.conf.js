@@ -5,8 +5,8 @@ exports.config = {
   helpers: {
     Appium: {
       app: `apk/${process.env.APK}`,
-      appPackage: 'spe.pos.rewash',
-      appActivity: 'spe.pos.rewash.feature.login.LoginActivity',
+      appPackage: process.env.PACKAGE,
+      appActivity: process.env.ACTIVITY,
       platform: 'Android',
       deviceName: 'Android Emulator',
       automationName: 'UiAutomator2',
