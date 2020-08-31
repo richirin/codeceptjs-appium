@@ -29,10 +29,10 @@ Scenario(
     var m = date.getMinutes();
     h = h < 10 ? '0' + h : h;
     m = m < 10 ? '0' + m : m;
-    await I.see(`${h + ':' + m}`);
+    await I.see(`${h}`);
     await I.tap('Riwayat');
     // transaksi ter-create di menu Riwayat
-    await I.see(`${h + ':' + m}`);
+    await I.see(`${h}`);
   },
 );
 
@@ -76,7 +76,7 @@ Scenario('Transaksi Menggunakan Cash', async I => {
   var m = date.getMinutes();
   h = h < 10 ? '0' + h : h;
   m = m < 10 ? '0' + m : m;
-  await I.see(`${h + ':' + m}`);
+  await I.see(`${h}`);
   // Get Text Uang Kembali setelah melakukan pembayaran
   element = await I.grabTextFrom('#spe.pos.rewash:id/tvKembalian');
   kembalian = parseInt(element.match(patt).join(''));
@@ -86,10 +86,10 @@ Scenario('Transaksi Menggunakan Cash', async I => {
   await I.tap('SELESAI');
   // transaksi tampil di menu Riwayat
   await I.tap('Riwayat');
-  await I.see(`${h + ':' + m}`);
+  await I.see(`${h}`);
 });
 
-Scenario.only('Transaksi Menggunakan OVO', async I => {
+Scenario('Transaksi Menggunakan OVO', async I => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -128,17 +128,24 @@ Scenario.only('Transaksi Menggunakan OVO', async I => {
   await I.see('Masukan Nomor Telepon');
   // tap konfirmasi
   await I.tap('KONFIRMASI');
-  await I.waitForInvisible('Pembayaran Selesai');
+  // verify modal pop up
+  await I.dontSee('Masukan Nomor Telepon');
+  // klik konfirmasi
+  await I.tap('KONFIRMASI');
+  await I.waitForElement(
+    '#spe.pos.rewash:id/tv_payment_dialog_success_method',
+    50,
+  );
   await I.tap('SELESAI');
   var date = new Date();
   var h = date.getHours();
   var m = date.getMinutes();
   h = h < 10 ? '0' + h : h;
   m = m < 10 ? '0' + m : m;
-  await I.see(`${h + ':' + m}`);
+  await I.see(h);
   // transaksi tampil di menu Riwayat
   await I.tap('Riwayat');
-  await I.see(`${h + ':' + m}`);
+  await I.see(h);
 });
 
 // Scenario('Transaksi Menggunakan LinkAja', async (I) => {
