@@ -4,12 +4,13 @@
   "description": "Automation untuk POS Rewash",
   "main": "index.js",
   "scripts": {
-    "test": "codeceptjs run --reporter mochawesome --reporter-options reportDir=report"
+    "test": "codeceptjs run --steps --reporter mochawesome --reporter-options reportDir=report"
   },
   "author": "Richi Ramadhan",
   "license": "MIT",
   "devDependencies": {
-    "appium": "^1.18.0",
+    "allure-commandline": "^2.13.0",
+    "appium": "^2.0.0-beta.2",
     "appium-doctor": "^1.15.3",
     "chai": "^4.2.0",
     "codeceptjs": "^2.6.7",
@@ -19,7 +20,7 @@
     "mochawesome": "^6.1.1",
     "prettier": "2.0.5",
     "supertest": "^4.0.2",
-    "webdriverio": "^6.3.6"
+    "webdriverio": "^6.4.5"
   },
   "dependencies": {
     "codeceptjs-resemblehelper": "^1.9.2"

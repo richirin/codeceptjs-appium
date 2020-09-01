@@ -1,7 +1,14 @@
 const assert = require('chai').expect;
 const {payLinkAja} = require('./api/linkaja-pay-page');
+const {washingMachine} = require('./api//process-washing-machine');
 
-Feature('Order');
+let date = new Date();
+let h = date.getHours();
+let m = date.getMinutes();
+h = h < 10 ? '0' + h : h;
+m = m < 10 ? '0' + m : m;
+
+Feature('PEMBAYARAN MELALUI MENU SELESAI');
 
 let total;
 let bayar;
@@ -10,50 +17,42 @@ let patt = /[(0-9)]/g;
 let linkAja;
 let response;
 
-Scenario(
-  'Transaksi terbuat saat klik bayar nanti di checkout page',
-  async I => {
-    // Login
-    await I.login(process.env.EMAIL, process.env.PASSWORD);
-    // Pilih Outlet
-    await I.pilihOutlet(process.env.OUTLET);
-    // Menunggu sampai element home tampil
-    await I.waitForVisible('Home', 100);
-    // Pilih di Produk
-    await I.pilihProduk(process.env.PRODUK1);
-    // Pilih Pelanggan
-    await I.tap(process.env.PELANGGAN);
-    await I.tap('SELANJUTNYA');
-    // Klik Bayar Nanti
-    await I.tap('BAYAR NANTI');
-    // Code untuk mendapatkan date hari ini(Jam dan menit xx:xx)
-    var date = new Date();
-    var h = date.getHours();
-    var m = date.getMinutes();
-    h = h < 10 ? '0' + h : h;
-    m = m < 10 ? '0' + m : m;
-    await I.see(`${h}`);
-    await I.tap('Riwayat');
-    // transaksi ter-create di menu Riwayat
-    await I.see(`${h}`);
-  },
-);
-
-Scenario('Transaksi Menggunakan Cash', async I => {
+Scenario('Bayar nanti menggunakan Cash', async I => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
   await I.pilihOutlet(process.env.OUTLET);
-  // Menunggu sampai tampil element home
-  await I.waitForVisible('Home', 100);
-  // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  // Menunggu sampai element home tampil
+  await I.waitForVisible('Home', 50);
+  // Pilih di Produk
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');
+  // Klik Bayar Nanti
+  await I.tap('BAYAR NANTI');
+  // Verify Element
+  await I.waitForVisible('List', 50);
+  // Pilih Mesin Cuci
+  await I.tap('Pilih Mesin');
+  await I.tap(process.env.MESIN_CUCI);
+  // Proses cuci
+  await I.tap('Mulai Mencuci');
+  await I.tap('NYALAKAN');
+  // Hit API
+  await I.swipeDown('1', 500);
+  await washingMachine(process.env.WASHING_ID);
+  // swipe down untuk refresh
+  await I.swipeDown('1', 500);
+  // taruh di rak
+  await I.tap('Pilih Rak');
+  await I.tap(process.env.RAK);
+  await I.tap('SIMPAN');
+  await I.tap('KONFIRMASI');
+  // tap Selesai
+  await I.tap('Selesai');
+  // tap Lakukan Pembayaran
+  await I.tap('LAKUKAN PEMBAYARAN');
   // Pilih Metode Pembayaran
   await I.see('Pilih Metode Pembayaran');
   await I.see('Pembayaran Digital');
@@ -73,12 +72,7 @@ Scenario('Transaksi Menggunakan Cash', async I => {
   element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_uang_kembali');
   uangKembali = parseInt(element.match(patt).join(''));
   await I.tap('KONFIRMASI');
-  // Code untuk mendapatkan date hari ini(Jam dan menit xx:xx)
-  var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  h = h < 10 ? '0' + h : h;
-  m = m < 10 ? '0' + m : m;
+  // verify transaksi tampil di menu list
   await I.see(`${h}`);
   // Get Text Uang Kembali setelah melakukan pembayaran
   element = await I.grabTextFrom('#spe.pos.rewash:id/tvKembalian');
@@ -92,21 +86,42 @@ Scenario('Transaksi Menggunakan Cash', async I => {
   await I.see(`${h}`);
 });
 
-Scenario('Transaksi Menggunakan OVO', async I => {
+Scenario('Bayar nanti menggunakan OVO', async I => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
   await I.pilihOutlet(process.env.OUTLET);
-  // Menunggu sampai tampil element home
-  await I.waitForVisible('Home', 100);
-  // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  // Menunggu sampai element home tampil
+  await I.waitForVisible('Home', 50);
+  // Pilih di Produk
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');
+  // Klik Bayar Nanti
+  await I.tap('BAYAR NANTI');
+  // Verify Element
+  await I.waitForVisible('List', 50);
+  // Pilih Mesin Cuci
+  await I.tap('Pilih Mesin');
+  await I.tap(process.env.MESIN_CUCI);
+  // Proses cuci
+  await I.tap('Mulai Mencuci');
+  await I.tap('NYALAKAN');
+  // Hit API
+  await I.swipeDown('1', 500);
+  await washingMachine(process.env.WASHING_ID);
+  // swipe down untuk refresh
+  await I.swipeDown('1', 500);
+  // taruh di rak
+  await I.tap('Pilih Rak');
+  await I.tap(process.env.RAK);
+  await I.tap('SIMPAN');
+  await I.tap('KONFIRMASI');
+  // tap Selesai
+  await I.tap('Selesai');
+  // tap Lakukan Pembayaran
+  await I.tap('LAKUKAN PEMBAYARAN');
   // Pilih Metode Pembayaran
   await I.see('Pilih Metode Pembayaran');
   await I.see('Pembayaran Digital');
@@ -139,37 +154,54 @@ Scenario('Transaksi Menggunakan OVO', async I => {
     '#spe.pos.rewash:id/tv_payment_dialog_success_method',
     50,
   );
+  // Verify payment method menggunakan OVO
   text = await I.grabTextFrom(
     '#spe.pos.rewash:id/tv_payment_dialog_success_method',
   );
   assert(text).to.contains('OVO');
   await I.tap('SELESAI');
-  var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  h = h < 10 ? '0' + h : h;
-  m = m < 10 ? '0' + m : m;
-  await I.see(h);
   // transaksi tampil di menu Riwayat
+  await I.waitForVisible('Riwayat');
   await I.tap('Riwayat');
   await I.see(h);
 });
 
-Scenario.only('Transaksi Menggunakan LinkAja', async I => {
+Scenario('Bayar nanti menggunakan LinkAja', async I => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
   await I.pilihOutlet(process.env.OUTLET);
-  // Menunggu sampai tampil element home
-  await I.waitForVisible('Home', 100);
-  // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  // Menunggu sampai element home tampil
+  await I.waitForVisible('Home', 50);
+  // Pilih di Produk
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');
+  // Klik Bayar Nanti
+  await I.tap('BAYAR NANTI');
+  // Verify Element
+  await I.waitForVisible('List', 50);
+  // Pilih Mesin Cuci
+  await I.tap('Pilih Mesin');
+  await I.tap(process.env.MESIN_CUCI);
+  // Proses cuci
+  await I.tap('Mulai Mencuci');
+  await I.tap('NYALAKAN');
+  // Hit API
+  await I.swipeDown('1', 500);
+  await washingMachine(process.env.WASHING_ID);
+  // swipe down untuk refresh
+  await I.swipeDown('1', 500);
+  // taruh di rak
+  await I.tap('Pilih Rak');
+  await I.tap(process.env.RAK);
+  await I.tap('SIMPAN');
+  await I.tap('KONFIRMASI');
+  // tap Selesai
+  await I.tap('Selesai');
+  // tap Lakukan Pembayaran
+  await I.tap('LAKUKAN PEMBAYARAN');
   // Pilih Metode Pembayaran
   await I.see('Pilih Metode Pembayaran');
   await I.see('Pembayaran Digital');
@@ -190,6 +222,8 @@ Scenario.only('Transaksi Menggunakan LinkAja', async I => {
   await I.tap('KONFIRMASI');
   // verify total harga
   element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_amount_link');
+  bayar = parseInt(element.substr(0, 15).match(patt).join(''));
+  assert(total).to.equal(bayar);
   // Hit endpoint
   linkAja = parseInt(element.substr(-4).match(patt).join(''));
   response = await payLinkAja(linkAja);
@@ -199,18 +233,14 @@ Scenario.only('Transaksi Menggunakan LinkAja', async I => {
     '#spe.pos.rewash:id/tv_payment_dialog_success_method',
     50,
   );
+  // Verify kalau payment method menggunakan LinkAja
   text = await I.grabTextFrom(
     '#spe.pos.rewash:id/tv_payment_dialog_success_method',
   );
   assert(text).to.contains('LinkAja');
   await I.tap('SELESAI');
-  var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  h = h < 10 ? '0' + h : h;
-  m = m < 10 ? '0' + m : m;
-  await I.see(h);
   // transaksi tampil di menu Riwayat
+  await I.waitForVisible('Riwayat', 50);
   await I.tap('Riwayat');
   await I.see(h);
 });

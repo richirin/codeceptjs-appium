@@ -19,9 +19,14 @@ module.exports = function () {
     },
 
     pilihProduk: function (produk) {
-      this.tap('Automation Kemeja');
+      this.tap(produk);
       this.tap('SIMPAN');
       this.tap('BAYAR');
+    },
+
+    pilihPelanggan: function (pelanggan) {
+      this.tap(pelanggan);
+      this.tap('SELANJUTNYA');
     },
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
