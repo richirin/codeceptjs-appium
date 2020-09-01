@@ -10,6 +10,7 @@ module.exports = function () {
     },
 
     pilihOutlet: function (outlet) {
+      this.waitForVisible('#android:id/text1', 50);
       this.tap('#android:id/text1');
       this.tap(outlet);
       this.tap('SIMPAN');
