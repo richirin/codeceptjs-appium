@@ -26,9 +26,9 @@ exports.config = {
   teardown: null,
   hooks: [],
   plugins: {
-    allure: {
-      enabled: true,
-    },
+    // allure: {
+    //   enabled: true,
+    // },
     // screenshotOnFail: {
     //   enabled: true
     // },
