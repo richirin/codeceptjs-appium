@@ -17,7 +17,7 @@ let patt = /[(0-9)]/g;
 let linkAja;
 let response;
 
-Scenario('Bayar nanti menggunakan Cash', async I => {
+Scenario('Bayar nanti menggunakan Cash', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -86,7 +86,7 @@ Scenario('Bayar nanti menggunakan Cash', async I => {
   await I.see(`${h}`);
 });
 
-Scenario('Bayar nanti menggunakan OVO', async I => {
+Scenario('Bayar nanti menggunakan OVO', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -166,7 +166,7 @@ Scenario('Bayar nanti menggunakan OVO', async I => {
   await I.see(h);
 });
 
-Scenario('Bayar nanti menggunakan LinkAja', async I => {
+Scenario('Bayar nanti menggunakan LinkAja', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet

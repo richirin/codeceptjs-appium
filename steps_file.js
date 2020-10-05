@@ -14,12 +14,12 @@ module.exports = function () {
       this.tap('#android:id/text1');
       this.tap(outlet);
       this.tap('SIMPAN');
-      this.see('Semua Produk');
-      this.see(outlet);
+      this.waitForVisible(outlet, 50);
     },
 
     pilihProduk: function (produk) {
       this.tap(produk);
+      this.tap('#spe.pos.rewash:id/increment');
       this.tap('SIMPAN');
       this.tap('BAYAR');
     },

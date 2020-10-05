@@ -9,7 +9,7 @@ let parsed;
 let element;
 let patt = /[(0-9)]/g;
 
-Scenario('Verify Produk', async I => {
+Scenario('Verify Produk', async ({ I }) => {
   // login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // pilih outlet
@@ -27,7 +27,7 @@ Scenario('Verify Produk', async I => {
   await I.dontSee(process.env.PRODUK2);
 });
 
-Scenario('Tambah produk tanpa Add-On', async I => {
+Scenario('Tambah produk tanpa Add-On', async ({ I }) => {
   // login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // pilih outlet
@@ -59,7 +59,7 @@ Scenario('Tambah produk tanpa Add-On', async I => {
 });
 
 // belum coba running
-Scenario('Delete Produk dari keranjang', async I => {
+Scenario.skip('Delete Produk dari keranjang', async ({ I }) => {
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   await I.pilihOutlet(process.env.OUTLET);
   await I.tap(process.env.PRODUK1);

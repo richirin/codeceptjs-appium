@@ -16,15 +16,15 @@ let patt = /[(0-9)]/g;
 let linkAja;
 let response;
 
-Scenario(
+Scenario.only(
   'Transaksi terbuat saat klik bayar nanti di checkout page',
-  async I => {
+  async({ I })=> {
     // Login
     await I.login(process.env.EMAIL, process.env.PASSWORD);
     // Pilih Outlet
     await I.pilihOutlet(process.env.OUTLET);
     // Menunggu sampai element home tampil
-    await I.waitForVisible('Home', 100);
+    await I.waitForVisible('Home', 50);
     // Pilih di Produk
     await I.pilihProduk(process.env.PRODUK1);
     // Pilih Pelanggan
@@ -44,7 +44,7 @@ Scenario(
   },
 );
 
-Scenario('Transaksi Menggunakan Cash', async I => {
+Scenario('Transaksi Menggunakan Cash', async({ I })=> {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -92,7 +92,7 @@ Scenario('Transaksi Menggunakan Cash', async I => {
   await I.see(`${h}`);
 });
 
-Scenario('Transaksi Menggunakan OVO', async I => {
+Scenario('Transaksi Menggunakan OVO', async({ I })=> {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -152,7 +152,7 @@ Scenario('Transaksi Menggunakan OVO', async I => {
   await I.see(h);
 });
 
-Scenario('Transaksi Menggunakan LinkAja', async I => {
+Scenario('Transaksi Menggunakan LinkAja', async({ I })=> {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -160,10 +160,7 @@ Scenario('Transaksi Menggunakan LinkAja', async I => {
   // Menunggu sampai tampil element home
   await I.waitForVisible('Home', 100);
   // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');

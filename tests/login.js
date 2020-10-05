@@ -1,6 +1,6 @@
 Feature('Login');
 
-Scenario('Berhasil Login', async I => {
+Scenario('Berhasil Login', async ({ I }) => {
   // await I.saveScreenshot("Codecept_IO_Screenshot_Image.png");
   // await I.seeVisualDiff("Codecept_IO_Screenshot_Image.png", {tolerance: 2, prepareBaseImage: false});
   await I.fillField('Masukkan Email / No Telepon Anda', process.env.EMAIL);
@@ -9,9 +9,10 @@ Scenario('Berhasil Login', async I => {
   await I.see('Pilih Outlet');
 });
 
+
 Scenario(
   'Gagal Login ketika memasukan email atau password yang salah',
-  async I => {
+  async ({ I }) => {
     await I.fillField('Masukkan Email / No Telepon Anda', 'iniemailsalah');
     await I.fillField('Masukan Password Anda', 'inipasswordsalah');
     await I.tap('MASUK');
@@ -19,7 +20,7 @@ Scenario(
   },
 );
 
-Scenario('Gagal Login ketika tidak memasukan email dan Password', async I => {
+Scenario('Gagal Login ketika tidak memasukan email dan Password', async ({ I }) => {
   await I.tap('MASUK');
   await I.seeElement('#spe.pos.rewash:id/iv_login_email_error');
   await I.seeElement('#spe.pos.rewash:id/iv_login_pass_error');

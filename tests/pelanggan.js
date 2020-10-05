@@ -8,7 +8,7 @@ const name = faker.name.findName();
 const phone = faker.phone.phoneNumber('08##########');
 const email = faker.internet.email();
 
-Scenario('Tambah Pelanggan', async I => {
+Scenario('Tambah Pelanggan', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -37,7 +37,7 @@ Scenario('Tambah Pelanggan', async I => {
   await I.see(name);
 });
 
-Scenario('Edit Profile Pelanggan', async I => {
+Scenario('Edit Profile Pelanggan', async ({ I }) => {
   let updateName = faker.name.findName();
   let updatePhone = faker.phone.phoneNumber('08##########');
   let updateEmail = faker.internet.email();
@@ -83,7 +83,7 @@ Scenario('Edit Profile Pelanggan', async I => {
   await I.see(name);
 });
 
-Scenario('Hapus Pelanggan', async I => {
+Scenario('Hapus Pelanggan', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet

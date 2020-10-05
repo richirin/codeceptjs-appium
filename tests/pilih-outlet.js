@@ -2,7 +2,7 @@ const assert = require('chai').expect;
 
 Feature('Pilih Outlet');
 
-Scenario('Pilih Outlet', async I => {
+Scenario('Pilih Outlet', async ({ I }) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
