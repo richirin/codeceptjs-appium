@@ -52,10 +52,7 @@ Scenario('Transaksi Menggunakan Cash', async ({I}) => {
   // Menunggu sampai tampil element home
   await I.waitForVisible('Home', 100);
   // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');
@@ -100,10 +97,7 @@ Scenario('Transaksi Menggunakan OVO', async ({I}) => {
   // Menunggu sampai tampil element home
   await I.waitForVisible('Home', 100);
   // Pilih Produk
-  await I.tap(process.env.PRODUK1);
-  await I.tap('SIMPAN');
-  // Klik Bayar
-  await I.tap('BAYAR');
+  await I.pilihProduk(process.env.PRODUK1);
   // Pilih Pelanggan
   await I.tap(process.env.PELANGGAN);
   await I.tap('SELANJUTNYA');
