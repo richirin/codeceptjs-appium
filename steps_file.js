@@ -22,6 +22,7 @@ module.exports = function () {
       this.tap('#spe.pos.rewash:id/increment');
       this.tap('SIMPAN');
       this.tap('BAYAR');
+      this.tap('LEWATI');
     },
 
     pilihPelanggan: function (pelanggan) {

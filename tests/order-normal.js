@@ -16,9 +16,9 @@ let patt = /[(0-9)]/g;
 let linkAja;
 let response;
 
-Scenario.only(
+Scenario(
   'Transaksi terbuat saat klik bayar nanti di checkout page',
-  async({ I })=> {
+  async ({I}) => {
     // Login
     await I.login(process.env.EMAIL, process.env.PASSWORD);
     // Pilih Outlet
@@ -44,7 +44,7 @@ Scenario.only(
   },
 );
 
-Scenario('Transaksi Menggunakan Cash', async({ I })=> {
+Scenario('Transaksi Menggunakan Cash', async ({I}) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -92,7 +92,7 @@ Scenario('Transaksi Menggunakan Cash', async({ I })=> {
   await I.see(`${h}`);
 });
 
-Scenario('Transaksi Menggunakan OVO', async({ I })=> {
+Scenario('Transaksi Menggunakan OVO', async ({I}) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet
@@ -152,7 +152,7 @@ Scenario('Transaksi Menggunakan OVO', async({ I })=> {
   await I.see(h);
 });
 
-Scenario('Transaksi Menggunakan LinkAja', async({ I })=> {
+Scenario('Transaksi Menggunakan LinkAja', async ({I}) => {
   // Login
   await I.login(process.env.EMAIL, process.env.PASSWORD);
   // Pilih Outlet

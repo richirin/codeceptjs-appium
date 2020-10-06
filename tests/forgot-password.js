@@ -1,6 +1,6 @@
 Feature('Forgot Password');
 
-ScScenario('Request Forgot Password', async ({ I }) => {
+Scenario('Request Forgot Password', async ({I}) => {
   await I.tap('Lupa Password');
   await I.fillField('Masukkan Email / No Telepon Anda', process.env.EMAIL);
   await I.tap('SELANJUTNYA');
@@ -9,7 +9,7 @@ ScScenario('Request Forgot Password', async ({ I }) => {
 
 Scenario(
   'gagal Request Forgot Password dengan email yang belum terdaftar',
-  async ({ I }) => {
+  async ({I}) => {
     await I.tap('Lupa Password');
     await I.fillField(
       'Masukkan Email / No Telepon Anda',
@@ -22,7 +22,7 @@ Scenario(
 
 Scenario(
   'gagal Request Forgot Password dengan format email yang salah',
-  async ({ I }) => {
+  async ({I}) => {
     await I.tap('Lupa Password');
     await I.fillField('Masukkan Email / No Telepon Anda', '123');
     await I.tap('SELANJUTNYA');
@@ -30,7 +30,11 @@ Scenario(
   },
 );
 
-Scenario('gagal Request Forgot Password tanpa mengisi kolom email', async ({ I }) => {
- await I.tap('SELANJUTNYA');
-  await I.see('Kolom email harus diisi');
-});
+Scenario(
+  'gagal Request Forgot Password tanpa mengisi kolom email',
+  async ({I}) => {
+    await I.tap('Lupa Password');
+    await I.tap('SELANJUTNYA');
+    await I.see('Kolom email harus diisi');
+  },
+);
