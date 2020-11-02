@@ -1,0 +1,236 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 1,
+    "failures": 0,
+    "start": "2020-10-09T07:58:20.680Z",
+    "end": "2020-10-09T07:58:38.869Z",
+    "duration": 18189,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 25,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "ab6b5d2a-83bd-40b6-a83a-1341e4b4d681",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+          "title": "PEMBAYARAN NORMAL",
+          "fullFile": "C:\\Users\\TEXO\\Desktop\\codeceptjs-appium\\tests\\order-normal.js",
+          "file": "\\tests\\order-normal.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook: codeceptjs.beforeSuite in \"PEMBAYARAN NORMAL\"",
+              "fullTitle": "PEMBAYARAN NORMAL \"before all\" hook: codeceptjs.beforeSuite in \"PEMBAYARAN NORMAL\"",
+              "timedOut": false,
+              "duration": 3,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.suiteSetup(suite)",
+              "err": {},
+              "uuid": "e2765aa2-6aa3-47f0-bbf9-35bf3f6ecfd1",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"before each\" hook: codeceptjs.before for \"Transaksi Menggunakan Cash\"",
+              "fullTitle": "PEMBAYARAN NORMAL \"before each\" hook: codeceptjs.before for \"Transaksi Menggunakan Cash\"",
+              "timedOut": false,
+              "duration": 18110,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "scenario.setup(suite)",
+              "err": {
+                "message": "Error: Can't connect to WebDriver.\nError: Failed to create session.\nwrite ECONNABORTED\n\nPlease make sure Selenium Server (ChromeDriver or PhantomJS) is running and accessible",
+                "estack": "Error: Failed to create session.\nwrite ECONNABORTED\n    at startWebDriverSession (node_modules\\webdriverio\\node_modules\\webdriver\\build\\utils.js:45:11)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)",
+                "diff": null
+              },
+              "uuid": "4db955c3-8276-4332-9528-66244ed8f69c",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook: codeceptjs.afterSuite in \"PEMBAYARAN NORMAL\"",
+              "fullTitle": "PEMBAYARAN NORMAL \"after all\" hook: codeceptjs.afterSuite in \"PEMBAYARAN NORMAL\"",
+              "timedOut": false,
+              "duration": 1,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.suiteTeardown(suite)",
+              "err": {},
+              "uuid": "b50c4a93-baef-4bca-8370-59357d521ffd",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook: finalize codeceptjs in \"PEMBAYARAN NORMAL\"",
+              "fullTitle": "PEMBAYARAN NORMAL \"after each\" hook: finalize codeceptjs in \"PEMBAYARAN NORMAL\"",
+              "timedOut": false,
+              "duration": 3,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.teardown(suite)",
+              "err": {},
+              "uuid": "db9dfd01-cbc7-4ba3-88ae-69779b6a32d8",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Transaksi terbuat saat klik bayar nanti di checkout page",
+              "fullTitle": "PEMBAYARAN NORMAL: Transaksi terbuat saat klik bayar nanti di checkout page",
+              "timedOut": false,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "09ac1c15-754c-4f6d-bd70-caee4e5bdcbb",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Transaksi Menggunakan Cash",
+              "fullTitle": "PEMBAYARAN NORMAL: Transaksi Menggunakan Cash",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I}) => {\n  // Login\n  await I.login(process.env.EMAIL, process.env.PASSWORD);\n  // Pilih Outlet\n  await I.pilihOutlet(process.env.OUTLET);\n  // Menunggu sampai tampil element home\n  await I.waitForVisible('Home', 100);\n  // Pilih Produk\n  await I.pilihProduk(process.env.PRODUK1);\n  // Pilih Pelanggan\n  await I.tap(process.env.PELANGGAN);\n  await I.tap('SELANJUTNYA');\n  // Pilih Metode Pembayaran\n  await I.see('Pilih Metode Pembayaran');\n  await I.see('Pembayaran Digital');\n  // Get text total\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_subtotal');\n  total = parseInt(element.match(patt).join(''));\n  await I.tap('CASH');\n  await I.tap('10k');\n  // Get Text kalkulator\n  element = await I.grabTextFrom('#spe.pos.rewash:id/number_display');\n  bayar = parseInt(element.match(patt).join(''));\n  await I.tap('SIMPAN');\n  // Get Text uang yang diinput di kalkulator\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_uang_bayar');\n  uangDibayar = parseInt(element.match(patt).join(''));\n  // Get Text Uang Kembali di ringkasan produk\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_uang_kembali');\n  uangKembali = parseInt(element.match(patt).join(''));\n  await I.tap('KONFIRMASI');\n  // verify transaksi tampil di menu list\n  await I.see(`${h}`);\n  // Get Text Uang Kembali setelah melakukan pembayaran\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tvKembalian');\n  kembalian = parseInt(element.match(patt).join(''));\n  assert(uangDibayar - total).equal(uangKembali);\n  assert(bayar - total).equal(kembalian);\n  // Klik Selesai\n  await I.tap('SELESAI');\n  // transaksi tampil di menu Riwayat\n  await I.tap('Riwayat');\n  await I.see(`${h}`);",
+              "err": {},
+              "uuid": "e7b70051-6867-4fbc-b6ef-b9539faa8d1c",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Transaksi Menggunakan OVO",
+              "fullTitle": "PEMBAYARAN NORMAL: Transaksi Menggunakan OVO",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I}) => {\n  // Login\n  await I.login(process.env.EMAIL, process.env.PASSWORD);\n  // Pilih Outlet\n  await I.pilihOutlet(process.env.OUTLET);\n  // Menunggu sampai tampil element home\n  await I.waitForVisible('Home', 100);\n  // Pilih Produk\n  await I.pilihProduk(process.env.PRODUK1);\n  // Pilih Pelanggan\n  await I.tap(process.env.PELANGGAN);\n  await I.tap('SELANJUTNYA');\n  // Pilih Metode Pembayaran\n  await I.see('Pilih Metode Pembayaran');\n  await I.see('Pembayaran Digital');\n  // Get text total\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_subtotal');\n  total = parseInt(element.match(patt).join(''));\n  await I.touchPerform([\n    {\n      action: 'tap',\n      options: {\n        x: 1412, // x offset\n        y: 650, // y offset\n        count: 1, // number of touches\n      },\n    },\n  ]);\n  // verify total harga\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_e_payment_total');\n  bayar = parseInt(element.match(patt).join(''));\n  assert(total).to.equal(bayar);\n  // Verify nomor telepon\n  await I.see('Masukan Nomor Telepon');\n  // tap konfirmasi\n  await I.tap('KONFIRMASI');\n  // verify modal pop up\n  await I.dontSee('Masukan Nomor Telepon');\n  // klik konfirmasi\n  await I.tap('KONFIRMASI');\n  await I.waitForVisible(\n    '#spe.pos.rewash:id/tv_payment_dialog_success_method',\n    50,\n  );\n  // Verify payment method menggunakan OVO\n  text = await I.grabTextFrom(\n    '#spe.pos.rewash:id/tv_payment_dialog_success_method',\n  );\n  assert(text).to.contains('OVO');\n  await I.tap('SELESAI');\n  // Verify transasksi tampil di menu list\n  await I.see(h);\n  // transaksi tampil di menu Riwayat\n  await I.tap('Riwayat');\n  await I.see(h);",
+              "err": {},
+              "uuid": "e7970945-5178-41ac-9748-ecc7bb968409",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Transaksi Menggunakan LinkAja",
+              "fullTitle": "PEMBAYARAN NORMAL: Transaksi Menggunakan LinkAja",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I}) => {\n  // Login\n  await I.login(process.env.EMAIL, process.env.PASSWORD);\n  // Pilih Outlet\n  await I.pilihOutlet(process.env.OUTLET);\n  // Menunggu sampai tampil element home\n  await I.waitForVisible('Home', 100);\n  // Pilih Produk\n  await I.pilihProduk(process.env.PRODUK1);\n  // Pilih Pelanggan\n  await I.tap(process.env.PELANGGAN);\n  await I.tap('SELANJUTNYA');\n  // Pilih Metode Pembayaran\n  await I.see('Pilih Metode Pembayaran');\n  await I.see('Pembayaran Digital');\n  // Get text total\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_subtotal');\n  total = parseInt(element.match(patt).join(''));\n  await I.touchPerform([\n    {\n      action: 'tap',\n      options: {\n        x: 1172, // x offset\n        y: 653, // y offset\n        count: 1, // number of touches\n      },\n    },\n  ]);\n  // tap Konfirmasi\n  await I.tap('KONFIRMASI');\n  // verify total harga\n  element = await I.grabTextFrom('#spe.pos.rewash:id/tv_payment_amount_link');\n  bayar = parseInt(element.substr(0, 15).match(patt).join(''));\n  assert(total).to.equal(bayar);\n  // Hit endpoint\n  linkAja = parseInt(element.substr(-4).match(patt).join(''));\n  response = await payLinkAja(linkAja);\n  assert(response.status).to.equal(200);\n  // verify element\n  await I.waitForVisible(\n    '#spe.pos.rewash:id/tv_payment_dialog_success_method',\n    50,\n  );\n  // Verify kalau payment method menggunakan LinkAja\n  text = await I.grabTextFrom(\n    '#spe.pos.rewash:id/tv_payment_dialog_success_method',\n  );\n  assert(text).to.contains('LinkAja');\n  await I.tap('SELESAI');\n  // Verify transaksi tampil di menu list\n  await I.see(h);\n  // transaksi tampil di menu Riwayat\n  await I.tap('Riwayat');\n  await I.see(h);",
+              "err": {},
+              "uuid": "412143bd-99e6-4ba9-bb6f-c0274d609adc",
+              "parentUUID": "89aa1ac9-fc5e-408d-b95f-3f802d27b236",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "09ac1c15-754c-4f6d-bd70-caee4e5bdcbb"
+          ],
+          "skipped": [
+            "e7b70051-6867-4fbc-b6ef-b9539faa8d1c",
+            "e7970945-5178-41ac-9748-ecc7bb968409",
+            "412143bd-99e6-4ba9-bb6f-c0274d609adc"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 0
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.1.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": "reportDir=report",
+      "version": "5.1.0"
+    }
+  }
+}

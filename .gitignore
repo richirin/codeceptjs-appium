@@ -1,7 +1,7 @@
 apk/*
 node_modules
-report/*
+report/*.png
+report/.ui
 src
 package-lock.json
 tests/screenshots
-.env

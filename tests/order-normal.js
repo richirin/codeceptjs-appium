@@ -16,7 +16,7 @@ let patt = /[(0-9)]/g;
 let linkAja;
 let response;
 
-Scenario(
+Scenario.skip(
   'Transaksi terbuat saat klik bayar nanti di checkout page',
   async ({I}) => {
     // Login
@@ -31,6 +31,8 @@ Scenario(
     await I.tap(process.env.PELANGGAN);
     await I.tap('SELANJUTNYA');
     // Klik Bayar Nanti
+    await I.see('Pilih Metode Pembayaran');
+    await I.see('Pembayaran Digital');
     await I.tap('BAYAR NANTI');
     var date = new Date();
     var h = date.getHours();
